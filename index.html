@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>堀口 祐一｜ホリスティックライフコーチング</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;500&family=Shippori+Mincho:wght@400;500;600&family=Zen+Kaku+Gothic+New:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --sage: #7C9A7E;
+    --sage-light: #A8C5AA;
+    --sage-pale: #E8F0E8;
+    --beige: #F0E8D8;
+    --beige-dark: #D9C9B0;
+    --cream: #FAF7F2;
+    --brown: #6B5744;
+    --brown-light: #9A8070;
+    --text: #3A3228;
+    --text-muted: #7A6E65;
+    --white: #FFFEF9;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Zen Kaku Gothic New', sans-serif;
+    font-weight: 300;
+    color: var(--text);
+    background: var(--cream);
+    line-height: 1.9;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding: 1.2rem 3rem;
+    display: flex; justify-content: space-between; align-items: center;
+    background: rgba(250, 247, 242, 0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(124, 154, 126, 0.15);
+    transition: all 0.4s;
+  }
+  .nav-logo {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 0.9rem;
+    letter-spacing: 0.15em;
+    color: var(--brown);
+  }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a {
+    font-size: 0.8rem;
+    letter-spacing: 0.12em;
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  .nav-links a:hover { color: var(--sage); }
+  .nav-cta {
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    color: var(--white);
+    background: var(--sage);
+    border: none;
+    padding: 0.6rem 1.4rem;
+    border-radius: 50px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.3s;
+  }
+  .nav-cta:hover { background: var(--sage-light); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: flex; align-items: center; justify-content: center;
+    position: relative;
+    overflow: hidden;
+    padding: 8rem 2rem 4rem;
+  }
+  .hero-bg {
+    position: absolute; inset: 0; z-index: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 70% 40%, rgba(168, 197, 170, 0.18) 0%, transparent 70%),
+      radial-gradient(ellipse 60% 80% at 20% 70%, rgba(217, 201, 176, 0.2) 0%, transparent 70%),
+      var(--cream);
+  }
+  .hero-leaf {
+    position: absolute;
+    opacity: 0.06;
+    font-size: 28rem;
+    right: -4rem; top: -4rem;
+    user-select: none;
+    animation: float 8s ease-in-out infinite;
+  }
+  @keyframes float { 0%,100%{transform:translateY(0) rotate(0deg)} 50%{transform:translateY(-20px) rotate(3deg)} }
+
+  .hero-inner {
+    position: relative; z-index: 1;
+    max-width: 680px;
+    text-align: center;
+  }
+  .hero-label {
+    display: inline-block;
+    font-size: 0.72rem;
+    letter-spacing: 0.25em;
+    color: var(--sage);
+    border: 1px solid var(--sage-light);
+    padding: 0.35rem 1.1rem;
+    border-radius: 50px;
+    margin-bottom: 2.2rem;
+    opacity: 0; animation: fadeUp 0.8s 0.2s ease forwards;
+  }
+  .hero-title {
+    font-family: 'Shippori Mincho', serif;
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    font-weight: 500;
+    line-height: 1.6;
+    letter-spacing: 0.05em;
+    color: var(--text);
+    margin-bottom: 1.8rem;
+    opacity: 0; animation: fadeUp 0.8s 0.4s ease forwards;
+  }
+  .hero-title em {
+    font-style: normal;
+    color: var(--sage);
+  }
+  .hero-sub {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    line-height: 2;
+    margin-bottom: 3rem;
+    opacity: 0; animation: fadeUp 0.8s 0.6s ease forwards;
+  }
+  .hero-buttons {
+    display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;
+    opacity: 0; animation: fadeUp 0.8s 0.8s ease forwards;
+  }
+  .btn-primary {
+    background: var(--sage);
+    color: var(--white);
+    border: none;
+    padding: 1rem 2.2rem;
+    border-radius: 50px;
+    font-family: 'Zen Kaku Gothic New', sans-serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.3s;
+    display: inline-block;
+  }
+  .btn-primary:hover { background: #6B8A6D; transform: translateY(-2px); }
+  .btn-outline {
+    background: transparent;
+    color: var(--sage);
+    border: 1px solid var(--sage-light);
+    padding: 1rem 2.2rem;
+    border-radius: 50px;
+    font-family: 'Zen Kaku Gothic New', sans-serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.3s;
+    display: inline-block;
+  }
+  .btn-outline:hover { background: var(--sage-pale); }
+
+  .hero-scroll {
+    position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%);
+    display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+    opacity: 0; animation: fadeUp 1s 1.2s ease forwards;
+  }
+  .scroll-line {
+    width: 1px; height: 50px;
+    background: linear-gradient(to bottom, var(--sage-light), transparent);
+    animation: scrollPulse 2s ease-in-out infinite;
+  }
+  @keyframes scrollPulse { 0%,100%{opacity:0.3} 50%{opacity:1} }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── SECTIONS ── */
+  section { padding: 6rem 2rem; }
+  .container { max-width: 900px; margin: 0 auto; }
+  .container-wide { max-width: 1100px; margin: 0 auto; }
+
+  .section-label {
+    font-size: 0.72rem;
+    letter-spacing: 0.25em;
+    color: var(--sage);
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+  .section-title {
+    font-family: 'Shippori Mincho', serif;
+    font-size: clamp(1.5rem, 3vw, 2.2rem);
+    font-weight: 500;
+    line-height: 1.7;
+    color: var(--text);
+    margin-bottom: 1.8rem;
+  }
+
+  /* ── EMPATHY ── */
+  .empathy { background: var(--white); }
+  .empathy-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+  .empathy-card {
+    background: var(--cream);
+    border: 1px solid rgba(124, 154, 126, 0.15);
+    border-radius: 16px;
+    padding: 1.8rem 2rem;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .empathy-card::before {
+    content: '';
+    position: absolute; left: 0; top: 0; bottom: 0;
+    width: 3px;
+    background: var(--sage-light);
+    border-radius: 3px 0 0 3px;
+  }
+  .empathy-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(124,154,126,0.12); }
+  .empathy-card p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.9;
+  }
+
+  /* ── ABOUT COACHING ── */
+  .about { background: var(--beige); }
+  .about-inner {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 5rem;
+    align-items: center;
+  }
+  .about-visual {
+    position: relative;
+    height: 380px;
+  }
+  .about-circle {
+    width: 260px; height: 260px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 35%, rgba(168,197,170,0.4), rgba(124,154,126,0.15));
+    border: 1px solid rgba(124,154,126,0.25);
+    position: absolute; top: 20px; left: 20px;
+    animation: breathe 5s ease-in-out infinite;
+  }
+  .about-circle-2 {
+    width: 180px; height: 180px;
+    border-radius: 50%;
+    border: 1px dashed rgba(124,154,126,0.3);
+    position: absolute; bottom: 30px; right: 0;
+    animation: breathe 5s ease-in-out infinite reverse;
+  }
+  .about-word {
+    position: absolute;
+    font-family: 'Shippori Mincho', serif;
+    font-size: 0.8rem;
+    color: var(--sage);
+    letter-spacing: 0.15em;
+  }
+  .about-word:nth-child(3) { top: 80px; left: 80px; }
+  .about-word:nth-child(4) { top: 160px; left: 50px; }
+  .about-word:nth-child(5) { bottom: 100px; right: 30px; }
+  .about-word:nth-child(6) { bottom: 50px; right: 60px; }
+  @keyframes breathe { 0%,100%{transform:scale(1)} 50%{transform:scale(1.04)} }
+
+  .about-content p {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    margin-bottom: 1.2rem;
+    line-height: 2;
+  }
+  .about-quote {
+    margin: 2rem 0;
+    padding: 1.5rem 2rem;
+    border-left: 2px solid var(--sage-light);
+    background: rgba(232, 240, 232, 0.4);
+    border-radius: 0 12px 12px 0;
+  }
+  .about-quote p {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 1rem;
+    color: var(--brown);
+    margin: 0;
+    line-height: 1.9;
+  }
+
+  /* ── MENU ── */
+  .menu { background: var(--white); }
+  .menu-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.8rem;
+    margin-top: 3.5rem;
+  }
+  .menu-card {
+    background: var(--cream);
+    border: 1px solid rgba(124,154,126,0.15);
+    border-radius: 20px;
+    padding: 2.4rem 2rem;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s;
+    display: flex; flex-direction: column;
+  }
+  .menu-card.featured {
+    background: var(--sage);
+    border-color: var(--sage);
+  }
+  .menu-card.featured .menu-tag,
+  .menu-card.featured .menu-name,
+  .menu-card.featured .menu-price,
+  .menu-card.featured .menu-desc,
+  .menu-card.featured .menu-detail { color: rgba(255,255,255,0.9); }
+  .menu-card.featured .menu-name { color: var(--white); }
+  .menu-card.featured .menu-price { color: var(--white); }
+  .menu-card.featured .menu-divider { background: rgba(255,255,255,0.25); }
+  .menu-card:hover { transform: translateY(-6px); box-shadow: 0 20px 50px rgba(124,154,126,0.15); }
+  .menu-tag {
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    color: var(--sage);
+    margin-bottom: 1rem;
+  }
+  .menu-icon { font-size: 1.6rem; margin-bottom: 1rem; }
+  .menu-name {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 1.05rem;
+    color: var(--text);
+    margin-bottom: 0.5rem;
+    line-height: 1.6;
+  }
+  .menu-divider {
+    height: 1px;
+    background: rgba(124,154,126,0.2);
+    margin: 1.2rem 0;
+  }
+  .menu-price {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 1.4rem;
+    color: var(--brown);
+    margin-bottom: 0.3rem;
+  }
+  .menu-detail {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-bottom: 1.2rem;
+  }
+  .menu-desc {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    line-height: 1.85;
+    flex: 1;
+  }
+  .menu-btn {
+    margin-top: 1.8rem;
+    display: block;
+    text-align: center;
+    padding: 0.75rem;
+    border-radius: 50px;
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    text-decoration: none;
+    transition: all 0.3s;
+    cursor: pointer;
+    border: none;
+    font-family: 'Zen Kaku Gothic New', sans-serif;
+  }
+  .menu-card:not(.featured) .menu-btn {
+    background: transparent;
+    border: 1px solid var(--sage-light);
+    color: var(--sage);
+  }
+  .menu-card:not(.featured) .menu-btn:hover { background: var(--sage-pale); }
+  .menu-card.featured .menu-btn {
+    background: var(--white);
+    color: var(--sage);
+  }
+
+  /* ── FLOW ── */
+  .flow { background: var(--beige); }
+  .flow-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin-top: 3rem;
+    position: relative;
+  }
+  .flow-steps::before {
+    content: '';
+    position: absolute;
+    left: 2.2rem;
+    top: 2.2rem;
+    bottom: 2.2rem;
+    width: 1px;
+    background: linear-gradient(to bottom, var(--sage-light), transparent);
+  }
+  .flow-step {
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
+    padding: 2rem 0;
+  }
+  .flow-num {
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    background: var(--white);
+    border: 1px solid var(--sage-light);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Shippori Mincho', serif;
+    font-size: 0.9rem;
+    color: var(--sage);
+    flex-shrink: 0;
+  }
+  .flow-content { flex: 1; padding-top: 0.5rem; }
+  .flow-content h3 {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 1rem;
+    color: var(--text);
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+  }
+  .flow-content p { font-size: 0.88rem; color: var(--text-muted); line-height: 1.9; }
+
+  /* ── PROFILE ── */
+  .profile { background: var(--white); }
+  .profile-inner {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 5rem;
+    align-items: start;
+  }
+  .profile-photo-wrap { position: relative; }
+  .profile-photo-bg {
+    width: 220px; height: 220px;
+    border-radius: 50%;
+    background: radial-gradient(circle, var(--sage-pale), var(--beige));
+    border: 2px solid rgba(124,154,126,0.2);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 5rem;
+    margin-bottom: 1.5rem;
+  }
+  .profile-name {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 1.2rem;
+    color: var(--text);
+    margin-bottom: 0.3rem;
+  }
+  .profile-title { font-size: 0.8rem; color: var(--sage); letter-spacing: 0.1em; }
+  .profile-certs {
+    margin-top: 1.5rem;
+    display: flex; flex-direction: column; gap: 0.6rem;
+  }
+  .cert-item {
+    display: flex; align-items: center; gap: 0.6rem;
+    font-size: 0.78rem; color: var(--text-muted);
+  }
+  .cert-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--sage-light);
+    flex-shrink: 0;
+  }
+  .profile-bio p {
+    font-size: 0.92rem;
+    color: var(--text-muted);
+    line-height: 2.1;
+    margin-bottom: 1.2rem;
+  }
+  .profile-values {
+    display: flex; flex-wrap: wrap; gap: 0.6rem;
+    margin-top: 2rem;
+  }
+  .value-tag {
+    font-size: 0.75rem;
+    color: var(--sage);
+    background: var(--sage-pale);
+    border: 1px solid rgba(124,154,126,0.2);
+    padding: 0.35rem 0.9rem;
+    border-radius: 50px;
+    letter-spacing: 0.05em;
+  }
+
+  /* ── CTA ── */
+  .cta-section {
+    background: var(--sage);
+    padding: 7rem 2rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .cta-section::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 80% 60% at 50% 50%, rgba(255,255,255,0.06), transparent);
+  }
+  .cta-section .section-label { color: rgba(255,255,255,0.6); }
+  .cta-section .section-title { color: var(--white); }
+  .cta-section p { color: rgba(255,255,255,0.8); font-size: 0.92rem; margin-bottom: 2.5rem; line-height: 2; }
+  .btn-white {
+    background: var(--white);
+    color: var(--sage);
+    padding: 1.1rem 2.8rem;
+    border-radius: 50px;
+    font-family: 'Zen Kaku Gothic New', sans-serif;
+    font-size: 0.88rem;
+    letter-spacing: 0.12em;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.3s;
+    border: none;
+    cursor: pointer;
+  }
+  .btn-white:hover { background: var(--cream); transform: translateY(-2px); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--text);
+    padding: 3rem 2rem;
+    text-align: center;
+  }
+  .footer-logo {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.6);
+    letter-spacing: 0.15em;
+    margin-bottom: 1rem;
+  }
+  footer p { font-size: 0.75rem; color: rgba(255,255,255,0.3); letter-spacing: 0.1em; }
+
+  /* ── REVEAL ANIMATION ── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(32px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    .empathy-grid { grid-template-columns: 1fr; }
+    .about-inner { grid-template-columns: 1fr; }
+    .about-visual { display: none; }
+    .menu-grid { grid-template-columns: 1fr; }
+    .profile-inner { grid-template-columns: 1fr; }
+    .profile-photo-wrap { display: flex; flex-direction: column; align-items: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav>
+  <div class="nav-logo">堀口 祐一｜Holistic Life Coaching</div>
+  <ul class="nav-links">
+    <li><a href="#about">コーチングとは</a></li>
+    <li><a href="#menu">メニュー</a></li>
+    <li><a href="#profile">プロフィール</a></li>
+    <li><a href="#contact">お問い合わせ</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">体験セッションへ</a>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-leaf">🌿</div>
+  <div class="hero-inner">
+    <div class="hero-label">Holistic Life Coaching</div>
+    <h1 class="hero-title">
+      内なる声に耳をすませると、<br>
+      <em>本来の自分</em>に還っていく。
+    </h1>
+    <p class="hero-sub">
+      答えを教えるコーチングではありません。<br>
+      あなたの中にすでにある声を、一緒に丁寧に聴いていく時間です。
+    </p>
+    <div class="hero-buttons">
+      <a href="#contact" class="btn-primary">体験セッションを申し込む</a>
+      <a href="#about" class="btn-outline">コーチングについて知る</a>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- ── EMPATHY ── -->
+<section class="empathy" id="empathy">
+  <div class="container">
+    <div class="reveal">
+      <p class="section-label">こんな気持ち、ありませんか</p>
+      <h2 class="section-title">毎日をこなしているのに、<br>どこかが満たされていない。</h2>
+    </div>
+    <div class="empathy-grid">
+      <div class="empathy-card reveal reveal-delay-1">
+        <p>「なんとなく毎日をこなしているけど、<br>本当にこれでいいのかな」</p>
+      </div>
+      <div class="empathy-card reveal reveal-delay-2">
+        <p>「変わりたい気持ちはあるけど、<br>何から始めればいいかわからない」</p>
+      </div>
+      <div class="empathy-card reveal reveal-delay-2">
+        <p>「ずっと「いい人」でいようとしてきたら、<br>本当の自分がわからなくなってきた」</p>
+      </div>
+      <div class="empathy-card reveal reveal-delay-3">
+        <p>「本当にやりたいことが、<br>自分でもよくわからなくなってきた」</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── ABOUT ── -->
+<section class="about" id="about">
+  <div class="container-wide">
+    <div class="about-inner">
+      <div class="about-visual reveal">
+        <div class="about-circle"></div>
+        <div class="about-circle-2"></div>
+        <span class="about-word">こころ</span>
+        <span class="about-word">からだ</span>
+        <span class="about-word">たましい</span>
+        <span class="about-word">いのち</span>
+      </div>
+      <div class="about-content">
+        <p class="section-label reveal">ホリスティックとは</p>
+        <h2 class="section-title reveal">心・体・魂、<br>あなた全体に寄り添う。</h2>
+        <div class="about-content reveal">
+          <p>ホリスティック（Holistic）とは、「全体的」という意味。<br>
+          心理学・身体感覚・エネルギーなど、あなたという人間を全体として見ながら、本来の姿に還っていくプロセスを一緒に歩みます。</p>
+          <p>アドバイスでも、指示でもなく——<br>
+          対話を通じて、あなたの内側にある声を丁寧に引き出していきます。</p>
+          <div class="about-quote">
+            <p>「答えは自分の中にある」<br>
+            そう言われても困る、という方こそ、<br>
+            このコーチングが届けたいと思っています。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── MENU ── -->
+<section class="menu" id="menu">
+  <div class="container">
+    <div class="reveal" style="text-align:center; margin-bottom: 1rem;">
+      <p class="section-label">メニュー</p>
+      <h2 class="section-title">あなたのペースで、<br>一歩ずつ。</h2>
+    </div>
+    <div class="menu-grid">
+      <div class="menu-card reveal reveal-delay-1">
+        <div class="menu-tag">FREE GIFT</div>
+        <div class="menu-icon">🌱</div>
+        <div class="menu-name">自分の声を聴く<br>10の質問</div>
+        <div class="menu-divider"></div>
+        <div class="menu-price">無料</div>
+        <div class="menu-detail">PDF配布</div>
+        <div class="menu-desc">メルマガ登録でプレゼント。忙しい毎日の中で、本当の自分に還るための内省ワークシートです。</div>
+        <a href="#contact" class="menu-btn">受け取る</a>
+      </div>
+      <div class="menu-card featured reveal reveal-delay-2">
+        <div class="menu-tag">RECOMMENDED</div>
+        <div class="menu-icon">🌿</div>
+        <div class="menu-name">はじめてのホリスティック<br>コーチング体験</div>
+        <div class="menu-divider"></div>
+        <div class="menu-price">¥4,000</div>
+        <div class="menu-detail">60分 / Zoom</div>
+        <div class="menu-desc">「悩みがはっきりしていない」方も大丈夫。そのままの状態で来てください。話しながら、少し楽になる60分です。</div>
+        <a href="#contact" class="menu-btn">申し込む</a>
+      </div>
+      <div class="menu-card reveal reveal-delay-3">
+        <div class="menu-tag">3 MONTHS PROGRAM</div>
+        <div class="menu-icon">🌳</div>
+        <div class="menu-name">自分に還る90日<br>継続プログラム</div>
+        <div class="menu-divider"></div>
+        <div class="menu-price">¥79,000</div>
+        <div class="menu-detail">月2回 × 3ヶ月 + LINEサポート</div>
+        <div class="menu-desc">気づく→解く→還る。3ヶ月かけて、自分の感覚を信じて生きられる自分になっていく伴走プログラム。</div>
+        <a href="#contact" class="menu-btn">相談する</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FLOW ── -->
+<section class="flow" id="flow">
+  <div class="container">
+    <div class="reveal">
+      <p class="section-label">セッションの流れ</p>
+      <h2 class="section-title">はじめての方も、<br>安心してご参加ください。</h2>
+    </div>
+    <div class="flow-steps">
+      <div class="flow-step reveal">
+        <div class="flow-num">01</div>
+        <div class="flow-content">
+          <h3>お申し込み</h3>
+          <p>フォームからお申し込みください。「どんな悩みか」「うまく話せるか」など不安な方も、そのままご連絡ください。</p>
+        </div>
+      </div>
+      <div class="flow-step reveal reveal-delay-1">
+        <div class="flow-num">02</div>
+        <div class="flow-content">
+          <h3>日程のご調整</h3>
+          <p>メールやLINEにてご都合のよい日時をお知らせします。Zoom URLをお送りします。</p>
+        </div>
+      </div>
+      <div class="flow-step reveal reveal-delay-2">
+        <div class="flow-num">03</div>
+        <div class="flow-content">
+          <h3>セッション当日</h3>
+          <p>今の状況・気持ちを自由にお話しください。対話を通じて、大切にしていることや本音を一緒に探していきます。</p>
+        </div>
+      </div>
+      <div class="flow-step reveal reveal-delay-3">
+        <div class="flow-num">04</div>
+        <div class="flow-content">
+          <h3>小さな一歩を見つける</h3>
+          <p>セッションの最後に、あなただけの「次の一歩」を見つけます。大きな変化でなくていい。小さな気づきが、人生を動かします。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PROFILE ── -->
+<section class="profile" id="profile">
+  <div class="container">
+    <div class="profile-inner">
+      <div class="profile-photo-wrap reveal">
+        <div class="profile-photo-bg">🌿</div>
+        <div class="profile-name">堀口 祐一</div>
+        <div class="profile-title">ホリスティックライフコーチ</div>
+        <div class="profile-certs">
+          <div class="cert-item"><span class="cert-dot"></span>上級心理カウンセラー（JADP）</div>
+          <div class="cert-item"><span class="cert-dot"></span>NLPプラクティショナー</div>
+          <div class="cert-item"><span class="cert-dot"></span>行動心理学系インストラクター</div>
+          <div class="cert-item"><span class="cert-dot"></span>ホリスティックライフコーチング修了</div>
+          <div class="cert-item"><span class="cert-dot"></span>直伝霊気</div>
+        </div>
+      </div>
+      <div class="profile-bio reveal reveal-delay-1">
+        <p class="section-label">プロフィール</p>
+        <p>はじめまして。堀口祐一（ほりぐち ゆういち）です。</p>
+        <p>大手企業に約10年勤務した後、心理学・仏教を学びながら内面探求の旅へ。神職として神社に携わりながら、ホリスティックライフコーチとして独立・活動しています。</p>
+        <p>「答えは自分の中にある」「満たされている前提で生きる」「内側が外側に反映される」——そんな世界観を軸に、約30名のモニターセッションを経て、現在に至ります。</p>
+        <p>心理学・NVC（非暴力コミュニケーション）・タオ・アラン・コーエンの教えに深く影響を受けています。福岡県福津市を拠点に、詩・瞑想・自然の中での内省を大切にしながら生きています。</p>
+        <div class="profile-values">
+          <span class="value-tag">心理学</span>
+          <span class="value-tag">仏教</span>
+          <span class="value-tag">NVC</span>
+          <span class="value-tag">タオ</span>
+          <span class="value-tag">アラン・コーエン</span>
+          <span class="value-tag">引き寄せの法則</span>
+          <span class="value-tag">霊気</span>
+          <span class="value-tag">詩・内省</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA ── -->
+<section class="cta-section" id="contact">
+  <div class="container reveal" style="text-align:center;">
+    <p class="section-label">まず、一歩</p>
+    <h2 class="section-title" style="color:var(--white);">変わりたいけど、<br>もう頑張りたくない。<br>そんなあなたへ。</h2>
+    <p>体験セッション60分、4,000円。<br>「悩みがはっきりしていない」方も大丈夫。<br>そのままの状態で来てください。</p>
+    <a href="mailto:your@email.com" class="btn-white">体験セッションを申し込む</a>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-logo">堀口 祐一｜ホリスティックライフコーチ</div>
+  <p>© 2025 Yuichi Horiguchi. All rights reserved.</p>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  window.addEventListener('scroll', () => {
+    const nav = document.querySelector('nav');
+    nav.style.boxShadow = window.scrollY > 50 ? '0 2px 20px rgba(0,0,0,0.06)' : 'none';
+  });
+</script>
+</body>
+</html>
