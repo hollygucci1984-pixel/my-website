@@ -529,6 +529,10 @@ nav {
 
 .service-card.featured {
   background: linear-gradient(165deg, var(--white) 60%, var(--sage-pale) 100%);
+  grid-column: 1 / -1;
+  max-width: 640px;
+  width: 100%;
+  margin: 0 auto;
 }
 
 .service-badge {
@@ -600,23 +604,11 @@ nav {
   position: relative;
 }
 
-.voice-card::before {
-  content: '「';
-  font-family: 'Shippori Mincho', serif;
-  font-size: 3rem;
-  color: var(--sage-pale);
-  position: absolute;
-  top: 10px;
-  left: 20px;
-  line-height: 1;
-}
-
 .voice-card p {
   font-family: 'Shippori Mincho', serif;
   font-size: 0.94rem;
   line-height: 2.4;
   color: var(--text);
-  padding-top: 28px;
 }
 
 .voice-card .voice-meta {
