@@ -682,79 +682,45 @@ nav {
 
 /* ============ AFTER (この時間のあとで) ============ */
 .after {
-  background: linear-gradient(180deg, var(--cream) 0%, var(--beige) 100%);
+  background: linear-gradient(180deg, var(--beige) 0%, var(--cream) 100%);
   padding: 110px 0;
 }
 
-.after-lead {
-  text-align: center;
-  font-family: 'Shippori Mincho', serif;
-  font-size: 0.95rem;
-  line-height: 2.4;
-  color: var(--text-light);
-  margin-bottom: 56px;
-}
-
-.after-steps {
-  max-width: 600px;
+.after-list {
+  list-style: none;
+  max-width: 560px;
   margin: 0 auto;
+}
+
+.after-list li {
+  font-family: 'Shippori Mincho', serif;
+  font-size: 0.96rem;
+  line-height: 2;
+  color: var(--text);
+  padding: 18px 0;
+  border-bottom: 1px solid rgba(163, 191, 166, 0.25);
   position: relative;
+  padding-left: 28px;
 }
 
-.after-steps::before {
-  content: '';
-  position: absolute;
-  left: 7px;
-  top: 10px;
-  bottom: 10px;
-  width: 1px;
-  background: var(--sage-pale);
-}
-
-.after-step {
-  position: relative;
-  padding-left: 40px;
-  padding-bottom: 44px;
-}
-
-.after-step:last-child {
-  padding-bottom: 0;
-}
-
-.after-step::before {
+.after-list li::before {
   content: '';
   position: absolute;
   left: 0;
-  top: 6px;
-  width: 15px;
-  height: 15px;
+  top: 28px;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
-  background: var(--white);
-  border: 2px solid var(--sage-light);
-}
-
-.after-step h3 {
-  font-family: 'Shippori Mincho', serif;
-  font-weight: 600;
-  font-size: 1.08rem;
-  color: var(--brown-dark);
-  margin-bottom: 14px;
-  letter-spacing: 0.1em;
-}
-
-.after-step p {
-  font-size: 0.88rem;
-  color: var(--text-light);
-  line-height: 2.2;
+  background: var(--sage-light);
 }
 
 .after-note {
   text-align: center;
-  margin-top: 60px;
+  margin-top: 50px;
   font-family: 'Shippori Mincho', serif;
-  font-size: 0.95rem;
+  font-size: 0.92rem;
+  color: var(--text-light);
   line-height: 2.4;
-  color: var(--text);
 }
 
 /* ============ CTA ============ */
@@ -919,9 +885,6 @@ footer {
   .section-spacer { padding: 80px 0; }
   .voice-card { padding: 28px 24px; }
 
-  .after-step { padding-left: 32px; padding-bottom: 36px; }
-  .after-lead { margin-bottom: 44px; }
-
   .intro { padding: 80px 0; }
   .for-you, .about, .approach, .service, .voice, .after { padding: 80px 0; }
   .cta { padding: 80px 0; }
@@ -1011,6 +974,27 @@ footer {
   </div>
 </section>
 
+<!-- ========== AFTER ========== -->
+<section class="after fade-up" id="after">
+  <div class="container">
+    <p class="section-label">AFTER</p>
+    <h2 class="section-title">この時間のあとで</h2>
+    <ul class="after-list">
+      <li>自分の本音に 気づけるようになる</li>
+      <li>「こうあるべき」の 力が すこしずつ ゆるむ</li>
+      <li>誰かの期待ではなく 自分の感覚で 選べるようになる</li>
+      <li>迷ったとき 立ち返る場所が 自分の中にあると知る</li>
+      <li>自分を責める声が やわらいでいく</li>
+      <li>答えを 外に探さなくなる</li>
+    </ul>
+    <p class="after-note">
+      劇的に生まれ変わるわけでは ないかもしれません。<br>
+      それでも──自分に還っていく その感覚を、<br>
+      あなたはもう 知っている。
+    </p>
+  </div>
+</section>
+
 <!-- ========== ABOUT ========== -->
 <section class="about fade-up" id="about">
   <div class="container-wide">
@@ -1030,7 +1014,17 @@ footer {
           「ちゃんとしなきゃ」で自分を見失っていた時期が、私にもあります。だから、その場所にいる人の言葉が、少しわかるのだと思います。
         </p>
         <p class="about-text">
+          はじまりは、製造業の技術者でした。約10年、「正しさ」と「効率」の世界に身を置くなかで、少しずつ、自分の内側の声が聞こえなくなっていったのを覚えています。
+        </p>
+        <p class="about-text">
+          その後、心理学や仏教、NVC、タオの学びに出会い、神社で3年間 神職として奉職。子育てシェアハウスの運営を通して、生きづらさを抱えた若者や ご家族のそばに居させてもらいました。肩書きはずいぶん変わりましたが、していたことは いつも同じでした。
+        </p>
+        <p class="about-text">
           誰かを変えようとするのではなく、その人が自分に還っていける余白を、そばでつくること。それが、私のしていることです。
+        </p>
+        <p class="about-text">
+          答えは、いつもあなたの中にあります。<br>
+          それを思い出すための時間を、ここでいっしょに。
         </p>
       </div>
     </div>
@@ -1115,38 +1109,6 @@ footer {
     <p class="service-note">
       オンライン（Zoom）で全国どこからでもご参加いただけます。<br>
       セッション内容はすべて守秘義務のもと、安心してお話しいただけます。
-    </p>
-  </div>
-</section>
-
-<!-- ========== AFTER ========== -->
-<section class="after fade-up" id="after">
-  <div class="container">
-    <p class="section-label">AFTER</p>
-    <h2 class="section-title">この時間のあとで</h2>
-    <p class="after-lead">
-      何かを新しく身につける時間ではありません。<br>
-      もともとあなたの中にあったものへ、還っていく時間です。<br>
-      セッションを重ねるなかで、こんな変化が起きていきます。
-    </p>
-    <div class="after-steps">
-      <div class="after-step">
-        <h3>気づく</h3>
-        <p>「あぁ、わたしはこう感じていたんだ」。話しながら、自分の本音に出会っていきます。これまで見ないようにしてきた気持ちも、責めずに、そのまま眺められるようになります。</p>
-      </div>
-      <div class="after-step">
-        <h3>ほどく</h3>
-        <p>「こうあるべき」「ちゃんとしなきゃ」。長いあいだ握りしめてきた思い込みが、少しずつゆるんでいきます。誰かの期待で選ぶことが減り、力の抜きどころがわかってきます。</p>
-      </div>
-      <div class="after-step">
-        <h3>還る</h3>
-        <p>答えを、外に探さなくなります。迷ったとき、立ち返る場所が自分の中にあると知っている。日々の小さな選択が、少しずつ「本当の自分」に沿ったものへ変わっていきます。</p>
-      </div>
-    </div>
-    <p class="after-note">
-      劇的に生まれ変わっているわけではないかもしれません。<br>
-      それでも──自分に還っていく、その感覚を、あなたはもう知っている。<br>
-      それは、これから先ずっと、あなたを支えてくれます。
     </p>
   </div>
 </section>
