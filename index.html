@@ -638,6 +638,33 @@ nav {
   font-weight: 600;
 }
 
+.price-limited {
+  display: inline-block;
+  font-size: 0.72rem;
+  color: var(--white);
+  background: var(--sage);
+  padding: 3px 12px;
+  border-radius: 20px;
+  letter-spacing: 0.08em;
+  margin-bottom: 10px;
+}
+
+.price-original {
+  color: var(--text-muted);
+  text-decoration: line-through;
+  font-size: 0.95rem;
+  margin-right: 4px;
+}
+
+.price-note {
+  margin-top: 12px;
+  font-family: 'Shippori Mincho', serif;
+  font-size: 0.8rem;
+  color: var(--text-light);
+  line-height: 1.9;
+  letter-spacing: 0.03em;
+}
+
 .service-gift {
   margin-top: 18px;
   padding-top: 16px;
@@ -1129,7 +1156,11 @@ footer {
           あなたはもともと、何も欠けていない存在。<br>
           3ヶ月かけて、そのことを少しずつ、感じられるようになっていく時間です。
         </p>
-        <p class="service-price">3ヶ月・週1回 ／ <strong>&yen;150,000</strong><span style="font-size:0.78rem;color:var(--text-muted);margin-left:4px;">（税込）</span></p>
+        <p class="service-price">
+          <span class="price-limited">期間限定の特別価格</span><br>
+          3ヶ月・週1回 ／ <span class="price-original">&yen;300,000</span> <strong>&yen;150,000</strong><span style="font-size:0.78rem;color:var(--text-muted);margin-left:4px;">（税込）</span>
+        </p>
+        <p class="price-note">本来 30万円以上でご提供している内容を、はじめての方に出会うため、いまだけこの価格でお届けしています。</p>
       </div>
     </div>
     <p class="service-note">
